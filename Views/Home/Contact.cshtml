@@ -1,0 +1,36 @@
+@model IYarles.Models.ContactEmail
+
+<section>
+    @if (ViewBag.Message is not null)
+    {
+        <div class="notification is-@ViewBag.Status">
+            @ViewBag.Message
+        </div>
+    }
+    <form asp-action="Contact" method="post">
+        <div class="field">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "label" })
+            <div class="control">
+                <input class="input" asp-for="Name">
+            </div>
+        </div>
+
+        <div class="field">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
+            <div class="control">
+                <input class="input" type="email" asp-for="Email">
+            </div>
+        </div>
+
+        <div class="field">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "label" })
+            <div class="control">
+                <textarea class="textarea" asp-for="Message"></textarea>
+            </div>
+        </div>
+
+        <div class="control">
+            <button class="button is-link">Submit</button>
+        </div>
+    </form>
+</section>
