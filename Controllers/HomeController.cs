@@ -41,7 +41,6 @@ namespace IYarles.Controllers
         public IActionResult Contact(ContactEmail model) // TODO: Make it
         {
             // print email
-            Console.WriteLine($"Name: {model.Name}, Email: {model.Email}, Message: {model.Message}");
             if (!ModelState.IsValid)
             {
                 ViewBag.Message = "The form values are invalid, please try again.";
