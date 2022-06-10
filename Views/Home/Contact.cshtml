@@ -1,4 +1,5 @@
 @model IYarles.Models.ContactEmail
+@using AspNetCore.ReCaptcha
 
 <section>
     @if (ViewBag.Message is not null)
@@ -30,6 +31,7 @@
         </div>
 
         <div class="control">
+            @Html.ReCaptcha()
             <button class="button is-link">Submit</button>
         </div>
     </form>

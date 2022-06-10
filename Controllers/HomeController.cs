@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
-using IYarles.Secrets;
+using AspNetCore.ReCaptcha;
 
 namespace IYarles.Controllers
 {
@@ -36,6 +36,7 @@ namespace IYarles.Controllers
             return View();
         }
 
+        [ValidateReCaptcha]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactEmail model) // TODO: Make it
