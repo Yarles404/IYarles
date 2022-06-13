@@ -1,6 +1,5 @@
 ﻿using IYarles.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
 using AspNetCore.ReCaptcha;
@@ -59,12 +58,6 @@ namespace IYarles.Controllers
             ViewBag.Message = "Your message has been sent! I will get back to you as soon as possible.";
             ViewBag.Status = "primary";
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
