@@ -1,0 +1,19 @@
+name: Build & Deploy on Azure
+on:
+  push:
+    branches:
+      - main
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    container: mcr.mirosoft.com/azure-cli
+    steps:
+      - uses: actions/checkout@v3
+      - uses: azure/docker-login@v1
+        with:
+          login-server: 'yarles.azurecr.io' # default: index.docker.io
+          username: ${{ secrets.AZR_USERNAME }}
+          password: ${{ secrets.AZR_PASSWORD }}
+      
+      - name: Build & Push # Webhook on registry will deploy to App Service on push
+        run: az acr build --file Dockerfile --registry yarles --image iyarles .
