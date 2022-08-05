@@ -6,7 +6,7 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
-    container: mcr.mirosoft.com/azure-cli
+    environment: main
     steps:
       - uses: actions/checkout@v3
       - uses: azure/docker-login@v1
@@ -15,5 +15,8 @@ jobs:
           username: ${{ secrets.AZR_USERNAME }}
           password: ${{ secrets.AZR_PASSWORD }}
       
-      - name: Build & Push # Webhook on registry will deploy to App Service on push
-        run: az acr build --file Dockerfile --registry yarles --image iyarles .
+      - name: Build
+        run: docker build -t yarles.azurecr.io/iyarles:latest
+      
+      - name: Deploy # Webhook on registry will deploy to App Service on push
+      - run: docker push yarles.azurecr.io/iyarles:latest
