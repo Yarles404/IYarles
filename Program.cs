@@ -3,6 +3,9 @@ using AspNetCore.ReCaptcha;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
+// Add environment variables
+builder.Configuration.AddEnvironmentVariables(prefix: "IYARLES");
+
 // Add services to the container.
 services.AddReCaptcha(builder.Configuration.GetSection("ReCaptcha"));
 services.AddMvc();

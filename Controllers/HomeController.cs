@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 using System.Net;
 using AspNetCore.ReCaptcha;
+using System;
 
 namespace IYarles.Controllers
 {
@@ -50,7 +51,7 @@ namespace IYarles.Controllers
 
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential(Secrets.Secrets.YARLES_EMAIL, Secrets.Secrets.GOOGLE_APP_PASSWORD),
+                Credentials = new NetworkCredential("yarlescy@gmail.com", Environment.GetEnvironmentVariable("GOOGLE_APP_PASSWORD")),
                 EnableSsl = true
             };
             client.Send("contact@iyarles.net", "yarlescy@gmail.com", $"Message from {model.Name} ({model.Email})", model.GenerateBody());
