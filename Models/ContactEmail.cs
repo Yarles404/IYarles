@@ -24,6 +24,8 @@ public class ContactEmail
         Message = message;
     }
 
+    public ContactEmail() { }
+
     public string GenerateBody()
     {
         return $"Name: {Name}\nEmail: {Email}\n\nMessage: \n{Message}";
