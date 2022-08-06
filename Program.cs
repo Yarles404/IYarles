@@ -5,8 +5,6 @@ var services = builder.Services;
 
 // Add environment variables
 builder.Configuration.AddEnvironmentVariables(prefix: "IYARLES_");
-Console.WriteLine(builder.Configuration.ToString());
-
 
 // Add services to the container.
 services.AddReCaptcha(builder.Configuration.GetSection("ReCaptcha"));
