@@ -26,6 +26,11 @@ namespace IYarles.Controllers
         //     return View();
         // }
 
+        public IActionResult Resume()
+        {
+            return RedirectToAction("PrettyResume");
+        }
+
         public IActionResult AtsResume()
         {
             return View();
