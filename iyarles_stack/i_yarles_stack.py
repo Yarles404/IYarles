@@ -26,7 +26,12 @@ class IYarlesStack(Stack):
                 asset=iyarles_image,
                 image_configuration=apprunner.ImageConfiguration(port="80"),
                 environment={
-                    
+                    'GOOGLE_APP_PASSWORD': environ['GOOGLE_APP_PASSWORD'],
+                    'IYARLES_ReCaptcha__ScoreThreshold': environ['IYARLES_ReCaptcha__ScoreThreshold'],
+                    'IYARLES_ReCaptcha__SecretKey': environ['IYARLES_ReCaptcha__SecretKey'],
+                    'IYARLES_ReCaptcha__SiteKey': environ['IYARLES_ReCaptcha__SiteKey'],
+                    'IYARLES_ReCaptcha__UseRecaptchaNet': environ['IYARLES_ReCaptcha__UseRecaptchaNet'],
+                    'IYARLES_ReCaptcha__Version': environ['IYARLES_ReCaptcha__Version']
                 }
             )
         )
