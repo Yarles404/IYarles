@@ -8,6 +8,7 @@ Secrets.cs
 *:Zone.Identifier
 .idea/
 appsettings.json
+.vscode/
 
 # User-specific files
 *.rsuser

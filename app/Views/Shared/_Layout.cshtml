@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IYarles</title>
+
+    @* Bulma CSS *@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    @* Custom CSS *@
+    <link rel="stylesheet" type="text/css" href="~/css/iyarles.css" />
+
+    @* Font Awesome *@
+    <script src="https://kit.fontawesome.com/f3c205aeeb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar has-background-white-bis is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" asp-action="About">
+                    <i class="far fa-hand-peace"></i>
+                </a>
+                <hr class="navbar-divider">
+                @* <a class="navbar-item" asp-action="About">
+                    <span>IYarles</span>
+                </a> *@
+                <div id="burger" class="navbar-burger" data-target="myNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="myNav" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" asp-action="About">
+                        About
+                    </a>
+                    @* <a class="navbar-item" asp-action="Services">
+                        Services
+                    </a> TODO: Find more time in my life to offer these services. *@
+                    <a class="navbar-item" asp-action="PrettyResume">
+                        Pretty Resume
+                    </a>
+                    <a class="navbar-item" asp-action="AtsResume">
+                        ATS Resume
+                    </a>
+                    <a class="navbar-item" asp-action="Contact">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    @* JQuery CDN *@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    @* Burger Menu *@
+    <script src="~/js/iyarles.js"></script>
+</body>
+
+</html>
