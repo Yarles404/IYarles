@@ -21,18 +21,13 @@ jobs:
           role-session-name: DeployIYarlesRoleSession
           aws-region: us-east-2
 
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     check-latest: true
+      - uses: actions/setup-node@v3
+        with:
+          check-latest: true
       
-      # # Install AWS CDK
+      # Install AWS CDK
       # - run: npm install -g typescript
-      # - run: npm install -g aws-cdk-lib
-
-      # - uses: actions/setup-python@v4
-      #   with:
-      #     python-version: "3.10"
-      # - run: pip install --upgrade pip
+      - run: npm install -g aws-cdk
 
       # Install requirements (aws cdk stuff)
       - run: pip install -r requirements.txt
