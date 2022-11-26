@@ -41,7 +41,7 @@ namespace IYarles.Controllers
             return View();
         }
 
-        public IActionResult Contact() // TODO: Make it
+        public IActionResult Contact()
         {
             return View();
         }
@@ -49,7 +49,7 @@ namespace IYarles.Controllers
         [ValidateReCaptcha]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Contact(ContactEmail model) // TODO: Make it
+        public IActionResult Contact(ContactEmail model)
         {
             // print email
             if (!ModelState.IsValid)
