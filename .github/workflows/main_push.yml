@@ -8,6 +8,7 @@ permissions:
   contents: read # This is required for actions/checkout
 jobs:
   Deploy:
+    container: python:3.10
     runs-on: ubuntu-latest
     environment: main
     steps:
@@ -20,18 +21,18 @@ jobs:
           role-session-name: DeployIYarlesRoleSession
           aws-region: us-east-2
 
-      - uses: actions/setup-node@v3
-        with:
-          check-latest: true
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     check-latest: true
       
-      # Install AWS CDK
-      - run: npm install -g typescript
-      - run: npm install -g aws-cdk-lib
+      # # Install AWS CDK
+      # - run: npm install -g typescript
+      # - run: npm install -g aws-cdk-lib
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - run: pip install --upgrade pip
+      # - uses: actions/setup-python@v4
+      #   with:
+      #     python-version: "3.10"
+      # - run: pip install --upgrade pip
 
       # Install requirements (aws cdk stuff)
       - run: pip install -r requirements.txt
