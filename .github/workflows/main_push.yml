@@ -22,9 +22,10 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          check-latest: true
       
       # Install AWS CDK
+      - run: npm install -g typescript
       - run: npm install -g aws-cdk-lib
 
       - uses: actions/setup-python@v4
