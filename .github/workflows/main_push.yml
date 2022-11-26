@@ -1,24 +1,33 @@
-name: Build & Deploy on Azure
+name: Deploy with AWS CDK
 on:
   push:
     branches:
       - main
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
 jobs:
   Deploy:
     runs-on: ubuntu-latest
     environment: main
     steps:
       - uses: actions/checkout@v3
-      - uses: azure/docker-login@v1
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          login-server: 'yarles.azurecr.io' # default: index.docker.io
-          username: ${{ secrets.AZR_USERNAME }}
-          password: ${{ secrets.AZR_PASSWORD }}
-      
-      - name: Build
-        run: |
-          cd app/
-          docker build -t yarles.azurecr.io/iyarles:latest .
-      
-      - name: Deploy # Webhook on registry will deploy to App Service on push
-        run: docker push yarles.azurecr.io/iyarles:latest
+          role-to-assume: arn:aws:iam::342755627552:role/IYarlesGithubActionsOidcRole
+          role-session-name: DeployIYarlesRoleSession
+          aws-region: us-east-2
+
+      # Install Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install --upgrade pip
+
+      # Install requirements (aws cdk stuff)
+      - run: pip install -r requirements.txt
+
+      # Deploy with CDK
+      - run: cdk deploy --require-approval never
