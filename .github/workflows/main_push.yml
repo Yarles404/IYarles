@@ -38,6 +38,11 @@ jobs:
       # Install requirements (aws cdk stuff)
       - run: pip install -r requirements.txt
 
+      # Bootstrap CDK
+      - run: cdk bootstrap
+        env:
+          AWS_DEFAULT_REGION: us-east-2
+
       # Deploy with CDK
       - run: cdk deploy --require-approval never
         env:
